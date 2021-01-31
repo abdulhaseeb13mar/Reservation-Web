@@ -1,7 +1,5 @@
 import React from "react";
 
-function Home() {
-  return <div>Home</div>;
+export default function ButtonAppBar() {
+  return <div>asdasdas</div>;
 }
-
-export default Home;

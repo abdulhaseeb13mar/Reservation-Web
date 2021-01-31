@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
-import Home from "../components/Home/Home";
-import AddPassenger from "../components/AddPassenger/AddPassenger";
+
+import Login from "../components/Login/Login";
+import AdminRoutes from "./adminRoutes";
+import { UserContext } from "../store/Store";
 
 function Routes(props) {
+  const [user, setUser] = useContext(UserContext);
+
   return (
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/add-passenger" component={AddPassenger} />
-      <Redirect to="/" />
+      {user.userId ? (
+        <>
+          <Route exact path="/" component={AdminRoutes} />
+          <Redirect to="/" />
+        </>
+      ) : (
+        <>
+          {" "}
+          <Route path="/login" component={Login} />
+          <Redirect to="/login" />
+        </>
+      )}
     </Switch>
   );
 }
