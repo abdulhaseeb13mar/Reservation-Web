@@ -10,9 +10,9 @@ function Routes(props) {
 
   return (
     <Switch>
-      {user.userId ? (
+      {user ? (
         <>
-          <Route exact path="/" component={AdminRoutes} />
+          <Route path="/" component={AdminRoutes} />
           <Redirect to="/" />
         </>
       ) : (

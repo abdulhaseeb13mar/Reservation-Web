@@ -5,6 +5,9 @@ import { Drawer, AppBar, Toolbar, Typography, Button, IconButton } from "@materi
 import MenuIcon from "@material-ui/icons/Menu";
 import Home from "../components/Home/Home";
 import AddPassenger from "../components/AddPassenger/AddPassenger";
+import Conveyance from "../components/Conveyance/Conveyance";
+import SearchPassenger from "../components/SearchPassenger/SearchPassenger";
+import ShowPassenger from "../components/ShowPassenger/ShowPassenger";
 
 function AdminRoutes() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,8 +33,11 @@ function AdminRoutes() {
         </Toolbar>
       </AppBar>
       <Switch>
-        <Route path="/" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route path="/add-passenger" component={AddPassenger} />
+        <Route path="/manage-conveyance" component={Conveyance} />
+        <Route path="/search-passenger" component={SearchPassenger} />
+        <Route path="/show-passenger" component={ShowPassenger} />
         <Redirect to="/" />
       </Switch>
       <Drawer anchor="left" open={isOpen} onClose={CloseDrawer}>

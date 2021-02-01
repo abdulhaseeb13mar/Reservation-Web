@@ -1,0 +1,25 @@
+.DashboardWrapper {
+  height: calc(100vh - 64px);
+  overflow: scroll;
+}
+
+.Card-Wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.CardPaper {
+  margin: 15px;
+  padding: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
