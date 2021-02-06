@@ -44,6 +44,12 @@ function ConveyanceDashboard(props) {
               size='large'
               color='primary'
               variant='contained'
+              onClick={() =>
+                props.history.push({
+                  pathname: './manage-conveyance/show-conveyance',
+                  state: { type: 1 },
+                })
+              }
             >
               Show All Trains
             </Button>
@@ -97,6 +103,12 @@ function ConveyanceDashboard(props) {
               size='large'
               color='secondary'
               variant='contained'
+              onClick={() =>
+                props.history.push({
+                  pathname: './manage-conveyance/show-conveyance',
+                  state: { type: 2 },
+                })
+              }
             >
               Show All Buses
             </Button>
@@ -149,6 +161,12 @@ function ConveyanceDashboard(props) {
               className={[classes.planeButtonStyle, classes.buttonWidth]}
               size='large'
               variant='contained'
+              onClick={() =>
+                props.history.push({
+                  pathname: './manage-conveyance/show-conveyance',
+                  state: { type: 3 },
+                })
+              }
             >
               Show All Planes
             </Button>

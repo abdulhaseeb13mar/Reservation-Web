@@ -16,6 +16,7 @@ import SearchPassenger from '../components/SearchPassenger/SearchPassenger';
 import ShowPassenger from '../components/ShowPassenger/ShowPassenger';
 import AddConveyance from '../components/Conveyance/AddConveyance';
 import ConveyanceDashboard from '../components/Conveyance/ConveyanceDashboard';
+import ShowConveyance from '../components/Conveyance/ShowConveyance';
 
 function AdminRoutes() {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,6 +56,10 @@ function AdminRoutes() {
         <Route
           path='/manage-conveyance/add-conveyance'
           component={AddConveyance}
+        />
+        <Route
+          path='/manage-conveyance/show-conveyance'
+          component={ShowConveyance}
         />
         <Route path='/show-passenger' component={ShowPassenger} />
         <Redirect to='/' />
