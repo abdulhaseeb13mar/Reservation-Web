@@ -8,6 +8,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
+import { Train, Bus, Plane } from '../../data/dummyData';
 
 const useStyles = makeStyles({
   formStyle: {

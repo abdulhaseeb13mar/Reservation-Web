@@ -1,5 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import {
+  Button,
+  ButtonGroup,
   Container,
   Paper,
   Table,
@@ -42,6 +44,7 @@ const ShowConveyance = (props) => {
               <TableCell>Single Fare</TableCell>
               <TableCell>Return Fare</TableCell>
               <TableCell>Available</TableCell>
+              <TableCell>Update/Delete</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -53,6 +56,16 @@ const ShowConveyance = (props) => {
                 <TableCell>{item.singleFare}</TableCell>
                 <TableCell>{item.returnFare}</TableCell>
                 <TableCell>{item.available === true ? 'Yes' : 'No'}</TableCell>
+                <TableCell>
+                  <ButtonGroup>
+                    <Button color='primary' variant='contained'>
+                      Update
+                    </Button>
+                    <Button color='secondary' variant='contained'>
+                      Delete
+                    </Button>
+                  </ButtonGroup>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

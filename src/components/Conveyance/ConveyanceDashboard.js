@@ -76,6 +76,12 @@ function ConveyanceDashboard(props) {
               size='large'
               color='primary'
               variant='contained'
+              onClick={() =>
+                props.history.push({
+                  pathname: './manage-conveyance/update-conveyance',
+                  state: { type: 1 },
+                })
+              }
             >
               Update Train
             </Button>
@@ -86,6 +92,12 @@ function ConveyanceDashboard(props) {
               size='large'
               color='primary'
               variant='contained'
+              onClick={() =>
+                props.history.push({
+                  pathname: './manage-conveyance/delete-conveyance',
+                  state: { type: 1 },
+                })
+              }
             >
               Delete Train
             </Button>
@@ -135,6 +147,12 @@ function ConveyanceDashboard(props) {
               size='large'
               color='secondary'
               variant='contained'
+              onClick={() =>
+                props.history.push({
+                  pathname: './manage-conveyance/update-conveyance',
+                  state: { type: 2 },
+                })
+              }
             >
               Update Bus
             </Button>
@@ -145,6 +163,12 @@ function ConveyanceDashboard(props) {
               size='large'
               color='secondary'
               variant='contained'
+              onClick={() =>
+                props.history.push({
+                  pathname: './manage-conveyance/delete-conveyance',
+                  state: { type: 2 },
+                })
+              }
             >
               Delete Bus
             </Button>
@@ -191,6 +215,12 @@ function ConveyanceDashboard(props) {
               className={[classes.planeButtonStyle, classes.buttonWidth]}
               size='large'
               variant='contained'
+              onClick={() =>
+                props.history.push({
+                  pathname: './manage-conveyance/update-conveyance',
+                  state: { type: 3 },
+                })
+              }
             >
               Update Plane
             </Button>
@@ -200,6 +230,12 @@ function ConveyanceDashboard(props) {
               className={[classes.planeButtonStyle, classes.buttonWidth]}
               size='large'
               variant='contained'
+              onClick={() =>
+                props.history.push({
+                  pathname: './manage-conveyance/delete-conveyance',
+                  state: { type: 3 },
+                })
+              }
             >
               Delete Plane
             </Button>

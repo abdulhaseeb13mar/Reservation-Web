@@ -31,13 +31,6 @@ const DeleteConveyance = (props) => {
     }
   });
 
-  const deleteHandler = (name) => {
-    // setTodos(todos.filter((el) => el.id !== todo.id));
-    const newData = data.filter((el) => el.name !== name);
-    console.log(newData);
-    setData([...data, newData]);
-  };
-
   return (
     <Container width='lg'>
       <Typography style={{ fontWeight: 'bold', margin: '15px 0' }} variant='h4'>
@@ -65,13 +58,8 @@ const DeleteConveyance = (props) => {
                 <TableCell>{item.available === true ? 'Yes' : 'No'}</TableCell>
                 <TableCell>
                   <ButtonGroup>
-                    <Button
-                      onClick={() => deleteHandler(item.name)}
-                      color='secondary'
-                      variant='contained'
-                      size='large'
-                    >
-                      Delete
+                    <Button color='primary' variant='contained' size='large'>
+                      Update
                     </Button>
                   </ButtonGroup>
                 </TableCell>
