@@ -13,6 +13,8 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Train, Bus, Plane } from '../../data/dummyData';
+import CheckIcon from '@material-ui/icons/Check';
+import ClearIcon from '@material-ui/icons/Clear';
 
 const DeleteConveyance = (props) => {
   const [type, setType] = useState('');
@@ -55,7 +57,13 @@ const DeleteConveyance = (props) => {
                 </TableCell>
                 <TableCell>{item.singleFare}</TableCell>
                 <TableCell>{item.returnFare}</TableCell>
-                <TableCell>{item.available === true ? 'Yes' : 'No'}</TableCell>
+                <TableCell>
+                  {item.available === true ? (
+                    <CheckIcon style={{ color: 'red', fontSize: '30px' }} />
+                  ) : (
+                    <ClearIcon style={{ color: 'green', fontSize: '30px' }} />
+                  )}
+                </TableCell>
                 <TableCell>
                   <ButtonGroup>
                     <Button color='primary' variant='contained' size='large'>

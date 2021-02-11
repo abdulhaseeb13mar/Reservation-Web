@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { Train, Bus, Plane } from '../../data/dummyData';
+import db from '../../Firebase/firebase';
 
 const useStyles = makeStyles({
   formStyle: {
@@ -34,6 +34,11 @@ const useStyles = makeStyles({
 const AddConveyance = (props) => {
   const [type, setType] = useState('');
 
+  const [name, setName] = useState('');
+  const [singleFare, setSingleFare] = useState(0);
+  const [returnFare, setReturnFare] = useState(0);
+  const [available, setAvailable] = useState(true);
+
   const classes = useStyles();
 
   useEffect(() => {
@@ -46,6 +51,29 @@ const AddConveyance = (props) => {
     }
   });
 
+  const addHandler = () => {
+    const tutorialsRef = db.collection(type);
+
+    tutorialsRef
+      .add({
+        name,
+        singleFare,
+        returnFare,
+        available,
+      })
+      .then(function (docRef) {
+        console.log('Conveyance added with ID: ', docRef.id);
+      })
+      .catch(function (error) {
+        console.error('Error adding Conveyance: ', error);
+      });
+
+    props.history.push({
+      pathname: './manage-conveyance/show-conveyance',
+      state: { type: type },
+    });
+  };
+
   return (
     <Container className={classes.container} maxWidth={'sm'}>
       <form className={classes.formStyle}>
@@ -57,6 +85,7 @@ const AddConveyance = (props) => {
           label={type + ' Name'}
           fullWidth={true}
           required
+          onChange={(e) => setName(e.target.value)}
         />
         <TextField
           className={classes.textField}
@@ -65,6 +94,7 @@ const AddConveyance = (props) => {
           inputProps={{ maxLength: 5 }}
           type='Number'
           required
+          onChange={(e) => setSingleFare(e.target.value)}
         />
         <TextField
           className={classes.textField}
@@ -73,17 +103,20 @@ const AddConveyance = (props) => {
           inputProps={{ maxLength: 11 }}
           type='number'
           required
+          onChange={(e) => setReturnFare(e.target.value)}
         />
         <FormControlLabel
           className={classes.textField}
           control={<Checkbox defaultChecked color='primary' />}
           label='Available'
+          onChange={(e) => setAvailable(e.target.checked)}
         />
         <Button
           fullWidth={true}
           variant='contained'
           color='primary'
           size='large'
+          onClick={addHandler}
         >
           Add
         </Button>

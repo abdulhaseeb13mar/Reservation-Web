@@ -12,24 +12,47 @@ import {
   TableRow,
   Typography,
 } from '@material-ui/core';
-import { Train, Bus, Plane } from '../../data/dummyData';
+import CheckIcon from '@material-ui/icons/Check';
+import ClearIcon from '@material-ui/icons/Clear';
+import db from '../../Firebase/firebase';
 
 const ShowConveyance = (props) => {
   const [type, setType] = useState('');
   const [data, setData] = useState([]);
+  const [id, setID] = useState('');
 
   useEffect(() => {
-    if (props.location.state.type == 1) {
+    if (props.location.state.type === 1) {
       setType('Train');
-      setData(Train);
-    } else if (props.location.state.type == 2) {
+      fetchBlogs('Train');
+    } else if (props.location.state.type === 2) {
       setType('Bus');
-      setData(Bus);
-    } else if (props.location.state.type == 3) {
+      fetchBlogs('Bus');
+    } else if (props.location.state.type === 3) {
       setType('Plane');
-      setData(Plane);
+      fetchBlogs('Plane');
     }
-  });
+  }, [data]);
+
+  const fetchBlogs = async (type) => {
+    const response = db.collection(type);
+    const data = await response.get();
+    let arr = [];
+    data.docs.forEach((item) => {
+      arr.push({
+        id: item.id,
+        name: item.data().name,
+        singleFare: item.data().name,
+        returnFare: item.data().returnFare,
+        available: item.data().available,
+      });
+    });
+    setData(arr);
+  };
+
+  const deleteHandler = async (item) => {
+    db.collection(type).doc(item.id).delete();
+  };
 
   return (
     <Container width='lg'>
@@ -55,13 +78,23 @@ const ShowConveyance = (props) => {
                 </TableCell>
                 <TableCell>{item.singleFare}</TableCell>
                 <TableCell>{item.returnFare}</TableCell>
-                <TableCell>{item.available === true ? 'Yes' : 'No'}</TableCell>
+                <TableCell>
+                  {item.available === true ? (
+                    <CheckIcon style={{ color: 'red', fontSize: '30px' }} />
+                  ) : (
+                    <ClearIcon style={{ color: 'green', fontSize: '30px' }} />
+                  )}
+                </TableCell>
                 <TableCell>
                   <ButtonGroup>
                     <Button color='primary' variant='contained'>
                       Update
                     </Button>
-                    <Button color='secondary' variant='contained'>
+                    <Button
+                      onClick={() => deleteHandler(item)}
+                      color='secondary'
+                      variant='contained'
+                    >
                       Delete
                     </Button>
                   </ButtonGroup>
