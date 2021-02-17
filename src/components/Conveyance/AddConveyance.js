@@ -91,8 +91,8 @@ const AddConveyance = (props) => {
           className={classes.textField}
           label='Single Fare'
           fullWidth={true}
-          inputProps={{ maxLength: 5 }}
-          type='Number'
+          inputProps={{ maxLength: 11 }}
+          type='number'
           required
           onChange={(e) => setSingleFare(e.target.value)}
         />
